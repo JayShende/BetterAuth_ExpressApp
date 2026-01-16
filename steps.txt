@@ -1,0 +1,65 @@
+* Check Gemini Chat
+
+
+* init Commands
+    pnpm init  
+    tsc --init
+
+* Modify the tsconfig.json
+
+* Create an src Folder 
+
+* Setup the Prisma App
+    - "https://www.prisma.io/docs/getting-started/prisma-orm/quickstart/postgresql" Follow this Documentation From Step 
+    -  pnpm add prisma @types/node @types/pg --save-dev 
+    -  pnpm add @prisma/client @prisma/adapter-pg pg dotenv
+    - Add "type": "module", in package.json
+    - init the prisma App pnpm prisma init
+    - replace the databse url in the .env file -> DATABASE_URL="postgresql://postgres:Jayshende@localhost:5432/test_express"
+
+* Install express JS 
+    pnpm add express @types/express
+
+* Better Auth Setup
+    - Installtaion using https://www.better-auth.com/docs/installation
+    - pnpm add better-auth
+    - add the secret Key
+    - add the baseURL
+    - create the lib folder inside src
+    - create src/lib/auth.ts https://www.better-auth.com/docs/installation#configure-database apart from the prisma orm setup we will use the trustedOrigins and emailAndPassword options
+    - Generate the Prisma Schema using pnpm dlx @better-auth/cli generate
+
+* Express Setup 
+    - https://www.better-auth.com/docs/integrations/express
+    - create src/index.ts
+    - paste the snippet From the docs 
+    - use the  For ExpressJS v5 *Un Comment the line *
+    - setUp the Cors as per Req Refrence the Docs
+
+* Make Sure that the BETTER_AUTH_URL and the app url and port is the same
+
+* Final Setps Before Testing
+    - pnpm prisma migrate dev
+    - pnpm prisma generate 
+
+
+* Import the dotenv at the top of the index.ts
+    - import "dotenv/config";
+
+
+* Add Running Scripts
+
+* Apis
+    - http://localhost:3001/api/auth/ok GET API
+    - http://localhost:3001/api/auth/sign-in/email
+    - http://localhost:3001/api/auth/sign-up/email
+    - http://localhost:3001/api/auth/get-session
+    - http://localhost:3005/api/auth/sign-out
+    - For Auth Middleware Check the docs and other setup of express_betterauth_3
+
+
+
+
+* PostMan Testing
+    - in the headers pass Origin "http://localhost:3000", or as per the trustedOrigins
+    - 
